@@ -20,7 +20,7 @@ public class DebugConsole : MonoBehaviour
         console.text = "";
     }
 
-    void OnEnable()
+    /* void OnEnable()
     {
         Application.logMessageReceivedThreaded += HandleLog;
     }
@@ -28,9 +28,9 @@ public class DebugConsole : MonoBehaviour
     void OnDisable()
     {
         Application.logMessageReceivedThreaded -= HandleLog;
-    }
+    } */
 
-    void HandleLog(string logString, string stackTrace, LogType type)
+    public void HandleLog(string logString)
     {
         // Delete oldest message
         if (queue.Count >= maxLines) queue.Dequeue();

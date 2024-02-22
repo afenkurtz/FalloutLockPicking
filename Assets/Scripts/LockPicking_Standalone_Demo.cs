@@ -83,7 +83,7 @@ public class LockPicking_Standalone_Demo : MonoBehaviour
 
 
 
-    void Awake()
+    void Start()
     {
         localDifficulty = GetDifficulty();
         NewLock();
@@ -115,7 +115,7 @@ public class LockPicking_Standalone_Demo : MonoBehaviour
     
     private void RotatePick()
     {
-        if (movePick)
+        if (movePick && !Managers_Standalone.UI.creditsOpened)
         {
             // creates direction from mouse to current position
             Vector3 dir = Input.mousePosition - cam.WorldToScreenPoint(transform.position);
@@ -154,7 +154,7 @@ public class LockPicking_Standalone_Demo : MonoBehaviour
 
     private void UnlockAttemptInput()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && !Managers_Standalone.UI.creditsOpened)
         {
             // cannot move bobbypin when trying to pick lock
             movePick = false;
@@ -165,7 +165,7 @@ public class LockPicking_Standalone_Demo : MonoBehaviour
 
             
         }
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W) && !Managers_Standalone.UI.creditsOpened)
         {
             movePick = true;
             keyPressTime = 0;
@@ -252,7 +252,7 @@ public class LockPicking_Standalone_Demo : MonoBehaviour
 
     private IEnumerator UnlockDoor()
     {
-        Debug.Log("Lock successfully picked!");
+        Managers_Standalone.UI.HandleLog("Lock successfully picked!");
         audioSourceMain.clip = audioClipUnlock;
         audioSourceMain.Play();
 
@@ -308,11 +308,11 @@ public class LockPicking_Standalone_Demo : MonoBehaviour
         unlockRange = new Vector2(unlockAngle - lockRange, unlockAngle + lockRange);
         attempts++;
 
-        Debug.Log($"-new {localDifficulty} lock generated");
+        Managers_Standalone.UI.HandleLog($"-new {localDifficulty} lock generated");
 
         if (Managers_Standalone.UI.logValues)
         {
-            Debug.Log($"--unlock angle = {unlockAngle}° from center");
+            Managers_Standalone.UI.HandleLog($"--unlock angle = {unlockAngle}° from center");
         }
     }
 
@@ -327,7 +327,7 @@ public class LockPicking_Standalone_Demo : MonoBehaviour
     {
         localDifficulty = difficulty;
 
-        Debug.Log($"Difficulty set to {localDifficulty}.");
+        Managers_Standalone.UI.HandleLog($"Difficulty set to {localDifficulty}.");
 
         // need to generate a new lock and pick to update any difficulty changes
         NewLock();
@@ -335,12 +335,12 @@ public class LockPicking_Standalone_Demo : MonoBehaviour
 
         if (Managers_Standalone.UI.logValues)
         {
-            Debug.Log($"--unlock range = {lockRange}°");
-            Debug.Log($"--pickStrength = {pickStrength} seconds");
+            Managers_Standalone.UI.HandleLog($"--unlock range = {lockRange}°");
+            Managers_Standalone.UI.HandleLog($"--pickStrength = {pickStrength} seconds");
         }
         else
         {
-            Debug.Log("-pick strength adjusted");
+            Managers_Standalone.UI.HandleLog("-pick strength adjusted");
         }
     }
 }

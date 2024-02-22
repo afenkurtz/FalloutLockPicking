@@ -8,7 +8,9 @@ public class UIManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
     public bool logValues { get; private set; }
+    public bool creditsOpened { get; private set; }
 
+    [SerializeField] private DebugConsole logScript;
     [SerializeField] private GameObject popup;
     [SerializeField] private TextMeshProUGUI difficulty;
     [SerializeField] private Toggle logValuesButton;
@@ -23,6 +25,7 @@ public class UIManager : MonoBehaviour, IGameManager
 
         difficulty.text = "Novice";
 
+        creditsOpened = false;
         logValues = false;
         inactiveColor = logValuesButton.colors.normalColor;
 
@@ -79,40 +82,47 @@ public class UIManager : MonoBehaviour, IGameManager
     public void ZeppelinButton()
     {
         Application.OpenURL("https://www.youtube.com/watch?v=68iYL-rktQ4&list=PLEj1kOxzPTLWX_q_XvjFF9h_3cS4C1jyu&index=12");
-        if (Managers_Standalone.UI.logValues) { Debug.Log("URL sent to default browser."); }
+        if (Managers_Standalone.UI.logValues) { Managers_Standalone.UI.HandleLog("URL sent to default browser."); }
     }
 
     public void derHugoButton()
     {
         Application.OpenURL("https://stackoverflow.com/questions/60228993/putting-debug-log-as-a-gui-element-in-unity");
-        if (Managers_Standalone.UI.logValues) { Debug.Log("URL sent to default browser."); }
+        if (Managers_Standalone.UI.logValues) { Managers_Standalone.UI.HandleLog("URL sent to default browser."); }
     }
 
     public void BrevicepsButton()
     {
         Application.OpenURL("https://freesound.org/people/Breviceps/sounds/458405/");
-        if (Managers_Standalone.UI.logValues) { Debug.Log("URL sent to default browser."); }
+        if (Managers_Standalone.UI.logValues) { Managers_Standalone.UI.HandleLog("URL sent to default browser."); }
     }
 
     public void duncanlewismackinnonButton()
     {
         Application.OpenURL("https://freesound.org/people/duncanlewismackinnon/sounds/159331/");
-        if (Managers_Standalone.UI.logValues) { Debug.Log("URL sent to default browser."); }
+        if (Managers_Standalone.UI.logValues) { Managers_Standalone.UI.HandleLog("URL sent to default browser."); }
     }
 
     public void MyButton()
     {
         Application.OpenURL("https://github.com/afenkurtz");
-        if (Managers_Standalone.UI.logValues) { Debug.Log("URL sent to default browser."); }
+        if (Managers_Standalone.UI.logValues) { Managers_Standalone.UI.HandleLog("URL sent to default browser."); }
     }
 
     public void OpenCreditsPopup()
     {
         popup.SetActive(true);
+        creditsOpened = true;
     }
 
     public void CloseCreditsPopup()
     {
         popup.SetActive(false);
+        creditsOpened = false;
+    }
+
+    public void HandleLog(string log)
+    {
+        logScript.HandleLog(log);
     }
 }
