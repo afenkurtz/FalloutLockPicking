@@ -64,5 +64,6 @@
 
 ## Licenses
  The assets in the project, namely the lock, pick, and screwdriver models and textures, are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+ 
  The code is licensed under [GNU GPLv3.0](https://www.gnu.org/licenses/gpl-3.0-standalone.html)
  
