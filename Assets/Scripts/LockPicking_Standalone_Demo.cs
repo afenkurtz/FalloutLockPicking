@@ -312,7 +312,7 @@ public class LockPicking_Standalone_Demo : MonoBehaviour
 
         if (Managers_Standalone.UI.logValues)
         {
-            Managers_Standalone.UI.HandleLog($"--unlock angle = {unlockAngle}° from center");
+            Managers_Standalone.UI.HandleLog($"--unlock angle = {-unlockAngle}° from center");
         }
     }
 
