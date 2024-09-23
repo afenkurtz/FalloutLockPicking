@@ -10,8 +10,6 @@
 
  ### Scenes
   Standalone Demo - ["LockPicking_Standalone_Demo.unity"](/Assets/Scenes/)
-  
-  **-=Not Yet Complete=-**  ~~Fist-Person Demo - ["LockPicking_FP_Demo.unity"](/Assets/Scenes/)~~
 
  ### Challenges and Updates
   Turns out, trigonometry is very handy to know when you want to do some math on rotations and angles! It was a challenge to understand how exactly all the rotations needed to be handled to calculate a range from which the lock could be unlocked.
@@ -20,7 +18,6 @@
   
   In addition to this core logic, I implemented some animations, sound effects, and managers to handle the possibility of different lock difficulties and the other gameplay designs that come along with that. 
   
-  The current demo scene that is complete is just an overlay of the lockpicking itself, but I am working to finish up a first-person scene with doors of varying difficulties. The player would interact not with static UI, but with the world-space objects directly. Expect that update after version 2.0a.
 
 ## Install and Run
  You should be able to run the project if you download and unzip the repository and [Add project from disk](https://docs.unity3d.com/hub/manual/AddProject.html) in the Unity Hub Projects tab.
@@ -52,8 +49,6 @@
   
   This script makes calls to the managers mainly for UI purposes, but also for handling lock difficulty.
 
-  ### First-Person Demo
-   I'll update the README when the FP Demo is released.
 
 ## Credits
  - The logic that calculates position and rotation angles for the lockpick and inner lock is from a [Zeppelin Games tutorial on YouTube](https://www.youtube.com/watch?v=68iYL-rktQ4&list=PLEj1kOxzPTLWX_q_XvjFF9h_3cS4C1jyu&index=12).
